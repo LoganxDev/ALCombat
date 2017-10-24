@@ -3,14 +3,14 @@ var andrewSprite  = document.getElementById('andrewDiv');
 var loganSprite = document.getElementById('loganDiv')
 
 //  if (isFireballColision()) {
-//           $fireball.addClass('explode').removeClass('moving').css('marginLeft','+=22px'); 
+//           $fireball.classList.add('explode').removeClass('moving').css('marginLeft','+=22px'); 
 //           clearInterval(explodeIfColision);
 //           setTimeout(function() { $fireball.remove(); }, 500); 
 //         }
   
 //       }, 50);
   
-//       setTimeout(function() { $fireball.addClass('moving'); }, 20);
+//       setTimeout(function() { $fireball.classList.add('moving'); }, 20);
               
 //       setTimeout(function() { 
 //           $fireball.remove(); 
@@ -23,60 +23,79 @@ var loganSprite = document.getElementById('loganDiv')
 /* Andrew movement functions */
 
 var walkLeftAndrew = function(){
-  andrewSprite.addClass('walk').css({ marginLeft:'-=10px' });
+  var margin;
+  margin = andrewSprite.style.marginLeft.slice(0,-2);
+  numMargin = parseInt(margin);
+  numMargin += -20;
+  andrewSprite.style.marginLeft = numMargin + 'px';
 };
 
 var walkRightAndrew = function(){
-  andrewSprite.addClass('walk').css({ marginLeft:'+=10px' });
+  var margin;
+  margin = andrewSprite.style.marginLeft.slice(0,-2);
+  numMargin = parseInt(margin);
+  numMargin += 20;
+  andrewSprite.style.marginLeft = numMargin + 'px';
 };
 
 var jumpAndrew = function(){
-  andrewSprite.addClass('jump');
-  setTimeout(function() { andrewSprite.addClass('down'); }, 500); 
+  andrewSprite.classList.add('jump');
+  setTimeout(function() { andrewSprite.classList.add('down'); }, 500); 
   setTimeout(function() { andrewSprite.removeClass('jump down'); }, 1000); 
 };
 var kneelAndrew = function(){
-  andrewSprite.addClass('kneel');
+  andrewSprite.src = 'images/kneelingA.png';
+  setTimeout(function() { andrewSprite.src = 'images/standA.png'; }, 250);
 };
 
 var punchAndrew = function(){
-  andrewSprite.addClass('punch'); 
-  setTimeout(function() { andrewSprite.removeClass('punch'); }, 150);
+  andrewSprite.src = 'images/punchA.png';
+  setTimeout(function() { andrewSprite.src = 'images/standA.png'; }, 150);
 };
+
 var kickAndrew = function(){
-  andrewSprite.addClass('kick');
-  setTimeout(function() { andrewSprite.removeClass('kick'); }, 500);
+  andrewSprite.src = 'images/kick1A.png';
+  setTimeout(function() { andrewSprite.src = 'images/standA.png'; }, 200);
 };
 
 
 /* Logan movement functions */
 
 var walkLeftLogan = function(){
-  loganSprite.addClass('walk').css({ marginLeft:'-=10px' });
+  var margin;
+  margin = loganSprite.style.marginLeft.slice(0,-2);
+  numMargin = parseInt(margin);
+  numMargin += -20;
+  loganSprite.style.marginLeft = numMargin + 'px';
 };
 
 var walkRightLogan = function(){
-  loganSprite.addClass('walk').css({ marginLeft:'+=10px' });
+  var margin;
+  margin = loganSprite.style.marginLeft.slice(0,-2);
+  numMargin = parseInt(margin);
+  numMargin += 20;
+  loganSprite.style.marginLeft = numMargin + 'px';
 };
 
 var jumpLogan = function(){
-  loganSprite.addClass('jump');
-  setTimeout(function() { loganSprite.addClass('down'); }, 500); 
+  loganSprite.classList.add('jump');
+  setTimeout(function() { loganSprite.classList.add('down'); }, 500); 
   setTimeout(function() { loganSprite.removeClass('jump down'); }, 1000); 
 };
 
 var kneelLogan = function(){
-  loganSprite.addClass('kneel');
+  loganSprite.src = 'images/kneelingL.png';
+  setTimeout(function() { loganSprite.src = 'images/standL.png'; }, 250);
 };
 
 var punchLogan = function(){
-  loganSprite.addClass('punch'); 
-  setTimeout(function() { loganSprite.removeClass('punch'); }, 150);
+  loganSprite.src = 'images/punchL.png';
+  setTimeout(function() { loganSprite.src = 'images/standL.png'; }, 150);
 };
 
 var kickLogan = function(){
-  loganSprite.addClass('kick');
-  setTimeout(function() { loganSprite.removeClass('kick'); }, 500);
+  loganSprite.src = 'images/kick1L.png';
+  setTimeout(function() { loganSprite.src = 'images/standL.png'; }, 200);
 };
 
 document.addEventListener('keyup', function (e) {
@@ -99,12 +118,9 @@ document.addEventListener('keydown', function(e) {
         }
 
         // G - kneel
-        if (e.keyCode == 84 
-            && !loganDiv.hasClass('kneel') 
-            && !loganDiv.hasClass('jump') 
-            && !loganDiv.hasClass('kick') 
+        if (e.keyCode == 71 
         ) { 
-            kneel();
+            kneelAndrew();
         }
 
         // F - Left
@@ -112,12 +128,12 @@ document.addEventListener('keydown', function(e) {
 		// H - Right
 		if (e.keyCode == 72) { walkRightAndrew(); }
 
-		// a - punch
-		// if (e.keyCode == 65 
-		//     && !$ken.hasClass('punch') 
-		// ) { 
-		//     punch(); 
-		// }
+		// A - punch
+		if (e.keyCode == 65 
+		    && !andrewSprite.classList.contains('punchA') 
+		) { 
+		    punchAndrew(); 
+		}
 
 		// // s - kick
 		// if (e.keyCode == 83 
@@ -158,11 +174,11 @@ document.addEventListener('keydown', function(e) {
 		if (e.keyCode == 39) { walkRightLogan(); }
 
 		// m - punch
-		// if (e.keyCode == 78 
-		//     && !$ken.hasClass('punch') 
-		// ) { 
-		//     punch(); 
-		// }
+		if (e.keyCode == 77 
+		    && !loganSprite.classList.contains('punchL')
+		) { 
+		    punchLogan(); 
+		}
 
 		// // < - kick
 		// if (e.keyCode == 77

@@ -3,24 +3,21 @@
 .logan { 
   position:absolute; bottom:112px; margin-left:150px;
   width:70px; height:80px;
-  background-image:url('logan.jpg'); 
+  z-index: 10;
+  background-image:url('images/standL.png'); 
 }
 
 .andrew {
 	position:absolute; bottom:112px; margin-left:150px;
-  	width:70px; height:80px; 
-  	background-image:url('andrew.jpg'); 
+  	width:70px; height:80px;   
+  	z-index: 10;
+  	background-image:url('images/standA.png');
 }
 
 /* dagger */
 
 /* ball */
 
-.stage {
-  position:absolute; top:0; width:100vw; height:100vh;
-  background:url('http://front-back.com/wp-content/uploads/2013/01/sf2-bg.jpg');
-  /*background-size:contain;*/
-  /*float:left; margin-right:20px; */
-}
+
 
 body { margin:0px; padding:0; }

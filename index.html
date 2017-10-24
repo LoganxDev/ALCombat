@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+body{
+	overflow: hidden;
+}
+
+.stage {
+  position:absolute; top:0; left:0; width:100vw; height:100vh;
+  background:url('http://front-back.com/wp-content/uploads/2013/01/sf2-bg.jpg');
+  z-index: 1;
+  /*background-size:contain;*/
+  /*float:left; margin-right:20px; */
+}
+
+.punchL {
+	 background:url('images/punch-Logan.png');
+}
+
+</style>
+
 <div class="stage">
-  <div class="logan" id="loganDiv"></div>
-  <div class="andrew" id="andrewDiv"></div>
+	<img class="logan" id="loganDiv" src="images/standL.png" height="200" width="90" style="position:absolute; bottom:5px; margin-left:200px">
+	<img class="andrew" id="andrewDiv" src="images/standA.png" height="200" width="90" style="position:absolute; bottom:5px; margin-left:400px">
+  <!-- <div class="logan" id="loganDiv"></div> -->
+  <!-- <div class="andrew" id="andrewDiv"></div> -->
 </div>
 
-<link rel="stylesheet" type="text/css" href="styles.css">
+<!-- <link rel="stylesheet" type="text/css" href="./styles.css"> -->
 <script type="text/javascript" src="main.js"></script>
 
 </html>
